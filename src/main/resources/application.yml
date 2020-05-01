@@ -1,1 +1,35 @@
-
+server:
+  port: 8080
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 3
+      thread-name-prefix: gallery-spider-
+  application:
+    name: joy-gallery-spider
+save:
+  path: /Users/joylau/docker-data/nginx2/html
+spider:
+  uploadbeta:
+    enable: true
+    url: https://uploadbeta.com/api/pictures/random/?key=BingEverydayWallpaperPicture
+    fixed-rate: 10000
+    save-path: ${save.path}
+  unsplash:
+    enable: true
+    url: https://source.unsplash.com
+    fixed-rate: 10000
+    size:
+      - 1280x720
+      - 1336x768
+      - 1440x900
+      - 1920x1080
+      - 2560x1440
+    keyword:
+      - code
+    save-path: ${save.path}
+logging:
+  level:
+    cn.joylau.code: debug
+    org.springframework.web.client.RestTemplate: debug

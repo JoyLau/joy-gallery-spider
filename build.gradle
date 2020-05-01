@@ -63,9 +63,13 @@ jib {
         volumes = ['/home/liufa/app/joy-gallery-spider/gallery']
         ports = ['8080']
         environment = [
+                logLevel: 'info',
                 args: ''
         ]
         args = [
+                '--save.path=/home/liufa/app/joy-gallery-spider/gallery',
+                '--logging.level.org.springframework.web.client.RestTemplate=${logLevel}',
+                '--logging.level.cn.joylau.code=${logLevel}',
                 '${args}'
         ]
         labels = [Descripttion: 'Gallery Spider Project For Spring Boot']
